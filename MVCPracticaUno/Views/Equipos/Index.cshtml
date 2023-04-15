@@ -1,0 +1,125 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<tipo_equipo> listaTipoEquipos = new List<tipo_equipo>
+    {
+        new tipo_equipo {id_tipo_equipo=1,descripcion="ACCESORIOS"},
+        new tipo_equipo {id_tipo_equipo=2,descripcion="LAPTOPS"},
+        new tipo_equipo {id_tipo_equipo=3,descripcion="VIDEO"}
+    };
+
+    List<marcas> listaMarcas = new List<marcas>
+    {
+        new marcas {id_marcas=1,nombre_marca="HP"},
+        new marcas {id_marcas=2,nombre_marca="DELL"},
+        new marcas {id_marcas=3,nombre_marca="ACER"}
+    };
+
+    List<estados_equipo> listaEstadosEquipo = new List<estados_equipo>
+    {
+        new estados_equipo {id_estados_equipo=1,descripcion="BUENO"},
+        new estados_equipo {id_estados_equipo=2,descripcion="MALO"},
+        new estados_equipo {id_estados_equipo=3,descripcion="EN REPARACION"}
+    };
+    
+}
+
+<form asp-action="Create">
+
+<h1>Mantenimiento de Equipos</h1>
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblnombreequipo","Nombre")
+    </div>
+    <div class="col-sm-4">
+        @Html.TextBox("nombre","",new {@class="form-control"})
+    </div>
+</div>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblDescripcion","Descripcion")
+    </div>
+    <div class="col-sm-4">
+        @Html.TextArea("descripcion","",new {@class="form-control"})
+    </div>
+</div>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblEstadosequipo","Tipo de Equipo")
+    </div>
+    <div class="col-sm-4">
+        @Html.DropDownList("tipo_equipo_id", new SelectList(listaTipoEquipos,"id_tipo_equipo","descripcion"),"--Seleccionar tipo de equipo--", new {@class="form-control"})
+    </div>
+</div>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblMarcas","Marca")
+    </div>
+    <div class="col-sm-4">
+        @Html.DropDownList("marca_id", new SelectList(listaMarcas,"id_marcas","nombre_marca"),"--Seleccionar marca--", new {@class="form-control"})
+    </div>
+</div>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblEstadoequipo","Estado del equipo")
+    </div>
+    <div class="col-sm-4">
+        @Html.DropDownList("estado_equipo_id", new SelectList(listaEstadosEquipo,"id_estados_equipo","descripcion"),"--Seleccionar estado de equipo--", new {@class="form-control"})
+    </div>
+</div>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblaniocompra","Año de Compra")
+    </div>
+    <div class="col-sm-4">
+        @Html.TextBox("anio_compra","",new {@class="form-control"})
+    </div>
+</div>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblCosto","Costo")
+    </div>
+    <div class="col-sm-4">
+        @Html.TextBox("costo","",new {@class="form-control"})
+    </div>
+</div>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblVidautil","Vida Útil")
+    </div>
+    <div class="col-sm-4">
+        @Html.TextBox("vida_util","",new {@class="form-control"})
+    </div>
+</div>
+
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2">
+        @Html.Label("lblModelo","Modelo")
+    </div>
+    <div class="col-sm-4">
+        @Html.TextBox("modelo","",new {@class="form-control"})
+    </div>
+</div>
+
+<div class="form-group row mb-4">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">@Html.CheckBox("estadoEquipo") Inactivo</div>
+</div>
+
+<div class="form-group row mnb-4">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+        <input type="submit" value="Guardar" class="form btn btn-primary">
+    </div>
+</div>
+
+</form>
