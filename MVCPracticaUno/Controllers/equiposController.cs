@@ -10,6 +10,7 @@ namespace MVCPracticaUno.Controllers
         {
             _equiposContext = equiposContext;
 
+
         }
         public IActionResult Index()
         {
