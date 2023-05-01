@@ -14,6 +14,18 @@ namespace MVCPracticaUno.Controllers
         }
         public IActionResult Index()
         {
+
+            var listadoDeEquipos = (from e in _equiposContext.equipos
+                                    join m in _equiposContext.marcas on e.marca_id equals m.id_marcas
+                                    select new
+                                    {
+                                        nombre = e.nombre,
+                                        descripcion = e.descripcion,
+                                        marca_id = e.marca_id,
+                                        marca_nombre = m.nombre_marca
+                                    }).ToList();
+            ViewData["listadoDeEquipos"] = listadoDeEquipos;
+
             return View();
         }
 
@@ -29,7 +41,8 @@ namespace MVCPracticaUno.Controllers
                 return View("Index");
             }
             catch (Exception ex) { return BadRequest(ex.Message); }
-            
+
+            //Formularios con Razor y HTML Helper            
         }
     }
 }
